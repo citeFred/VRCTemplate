@@ -29,18 +29,18 @@ protected:
 
 	// [1-2] Add MotionControllerComponent to the class
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")	// added to make it visible in the editor
-	UMotionControllerComponent* MotionController;
+	TObjectPtr<UMotionControllerComponent> MotionController;
 
 	// [2-1] Add a SkeletalMeshComponent to the class (It's Include in "CoreMinimal.h")
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
-	USkeletalMeshComponent* HandMesh;
+	TObjectPtr<USkeletalMeshComponent> HandMesh;
 
 	// [3-2] Add a WidgetInteractionComponent to the class
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
-	UWidgetInteractionComponent* WidgetInteractionComponent;
+	TObjectPtr<UWidgetInteractionComponent> WidgetInteractionComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
-	USphereComponent* GrabSphere; // [4-1] Add a SphereComponent to the class (It's Include in "CoreMinimal.h")
+	TObjectPtr<USphereComponent> GrabSphere; // [4-1] Add a SphereComponent to the class (It's Include in "CoreMinimal.h")
 
 private:
 
