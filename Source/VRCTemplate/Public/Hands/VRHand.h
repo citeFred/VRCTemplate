@@ -25,31 +25,28 @@ protected:
 	virtual void Tick(float DeltaTime) override;
 	virtual void BeginPlay() override;
 
-	// **Add, Adjust custom component in C++ into Blueprint**
-
-	// [1-2] Add MotionControllerComponent to the class
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")	// added to make it visible in the editor
+#pragma region Components
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UMotionControllerComponent> MotionController;
 
-	// [2-1] Add a SkeletalMeshComponent to the class (It's Include in "CoreMinimal.h")
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
 	TObjectPtr<USkeletalMeshComponent> HandMesh;
 
-	// [3-2] Add a WidgetInteractionComponent to the class
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
 	TObjectPtr<UWidgetInteractionComponent> WidgetInteractionComponent;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
-	TObjectPtr<USphereComponent> GrabSphere; // [4-1] Add a SphereComponent to the class (It's Include in "CoreMinimal.h")
+	TObjectPtr<USphereComponent> GrabSphere;
+#pragma endregion
 
-	// [4-1] Add HandData to the class
+#pragma region HandData
+	// Define the hand type (left or right) for the hand mesh
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components|Hands|HandData")
-	EControllerHand HandType; // Choose hand type (left or right) in the editor
+	EControllerHand HandType;
 
-	// [4-2] Add a boolean to the class to mirror the animation
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components|Hands|HandData")
 	bool bMirrorAnimation;
-
+#pragma endregion
 private:
 
 
