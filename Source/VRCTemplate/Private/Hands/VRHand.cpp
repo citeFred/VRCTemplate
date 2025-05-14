@@ -2,24 +2,33 @@
 
 
 #include "Hands/VRHand.h"
-#include "Charactors/VRCharacterBase.h"
 
 AVRHand::AVRHand()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	// **Add, Adjust custom component in C++ into Blueprint**
+
+	// [1-3] Add MotionControllerComponent follow up header file
+	MotionController = CreateDefaultSubobject<UMotionControllerComponent>("MotionController");
+	SetRootComponent(MotionController); // [1-4]. Set MotionController as RootComponent
+
+	// [2-2] Add SkeletalMeshComponent follow up header file
+	HandMesh = CreateDefaultSubobject<USkeletalMeshComponent>("HandMesh");
+	HandMesh->SetupAttachment(MotionController); // [2-3] Attach HandMesh to MotionController
+
+	// [3-3] Add WidgetInteractionComponent follow up header file
+	WidgetInteractionComponent = CreateDefaultSubobject<UWidgetInteractionComponent>("WidgetInteractionComponent");
+	WidgetInteractionComponent->SetupAttachment(HandMesh); // [3-4] Attach WidgetInteractionComponent to HandMesh
+
+	// [4-2] Add VRGripInterface follow up header file
+	GrabSphere = CreateDefaultSubobject<USphereComponent>("GrabSphere");
+	GrabSphere->SetupAttachment(HandMesh); // [4-3] Attach GrabSphere to HandMesh
 
 }
 
-void AVRHand::BeginPlay()
-{
-	Super::BeginPlay();
-	//AVRCharacterBase Character;
-	//Character.var; // Not accessible, protected variable in the base class
-	
-	//AVRCharacterBase* PointerToCharacter; // Pointer to the character class
-	//if (PointerToCharacter) // Check if the pointer is valid
-	//	PointerToCharacter->Var; // Accessing the variable through the pointer
-
+void AVRHand::BeginPlay()  
+{  
+    Super::BeginPlay();  
 }
 
 void AVRHand::Tick(float DeltaTime)

@@ -12,7 +12,6 @@ AVRCharacterBase::AVRCharacterBase()
 void AVRCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	var; // protected access
 	
 }
 
@@ -21,10 +20,3 @@ void AVRCharacterBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
-
-//void AVRCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-//{
-//	Super::SetupPlayerInputComponent(PlayerInputComponent);
-//
-//}
-
