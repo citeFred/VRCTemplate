@@ -42,6 +42,14 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components|Hands")
 	TObjectPtr<USphereComponent> GrabSphere; // [4-1] Add a SphereComponent to the class (It's Include in "CoreMinimal.h")
 
+	// [4-1] Add HandData to the class
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components|Hands|HandData")
+	EControllerHand HandType; // Choose hand type (left or right) in the editor
+
+	// [4-2] Add a boolean to the class to mirror the animation
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Components|Hands|HandData")
+	bool bMirrorAnimation;
+
 private:
 
 
