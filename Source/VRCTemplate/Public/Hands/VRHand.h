@@ -7,8 +7,8 @@
 #include "VRHand.generated.h"
 
 // Forward declarations
-class USkeletalMeshComponent;
 class UMotionControllerComponent;
+class USkeletalMeshComponent;
 class UWidgetInteractionComponent;
 class USphereComponent;
 
@@ -22,8 +22,10 @@ public:
 	AVRHand();
 
 protected:
-	virtual void Tick(float DeltaTime) override;
+	// [return type] [function name]([parameters])
+	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 #pragma region Components
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
