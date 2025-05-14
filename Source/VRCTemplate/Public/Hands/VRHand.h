@@ -4,10 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "MotionControllerComponent.h" // [1-1] Include the MotionControllerComponent header (It's from Ctrl + T, search for MotionControllerComponent)
-#include "Components/WidgetInteractionComponent.h" // [3-1] Include the WidgetInteractionComponent header
-#include "Components/SphereComponent.h" // [3-1] Include the SphereComponent header
 #include "VRHand.generated.h"
+
+// Forward declarations
+class USkeletalMeshComponent;
+class UMotionControllerComponent;
+class UWidgetInteractionComponent;
+class USphereComponent;
+
 
 UCLASS()
 class VRCTEMPLATE_API AVRHand : public AActor
