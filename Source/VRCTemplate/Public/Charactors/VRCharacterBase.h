@@ -11,19 +11,21 @@ class VRCTEMPLATE_API AVRCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
+	// Scopes: Public, Protected, Private
 public:
-	// Sets default values for this character's properties
-	AVRCharacterBase();
+	AVRCharacterBase(); // Constructor	
+	int32 Var; // Variable definition
+
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	virtual void BeginPlay() override; // Prototype for BeginPlay function
+	int var = 32;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime) override; // Prototype for Tick function
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+private:
 
 };

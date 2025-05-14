@@ -2,23 +2,26 @@
 
 
 #include "Hands/VRHand.h"
+#include "Charactors/VRCharacterBase.h"
 
-// Sets default values
 AVRHand::AVRHand()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
 
-// Called when the game starts or when spawned
 void AVRHand::BeginPlay()
 {
 	Super::BeginPlay();
+	//AVRCharacterBase Character;
+	//Character.var; // Not accessible, protected variable in the base class
 	
+	//AVRCharacterBase* PointerToCharacter; // Pointer to the character class
+	//if (PointerToCharacter) // Check if the pointer is valid
+	//	PointerToCharacter->Var; // Accessing the variable through the pointer
+
 }
 
-// Called every frame
 void AVRHand::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
