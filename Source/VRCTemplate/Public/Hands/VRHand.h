@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Interfaces/InteractInterface.h"
+
 #include "VRHand.generated.h"
 
 // Forward declarations
@@ -26,6 +28,12 @@ protected:
 	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	void GrabObject();
+
+	UFUNCTION(BlueprintCallable)
+	void ReleaseObject();
 
 #pragma region Components
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
@@ -50,6 +58,6 @@ protected:
 	bool bMirrorAnimation;
 #pragma endregion
 private:
-
+	TScriptInterface<IInteractInterface> CurrentlyGrabbedActor;
 
 };

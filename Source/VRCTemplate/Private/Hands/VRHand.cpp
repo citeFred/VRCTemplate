@@ -60,3 +60,31 @@ void AVRHand::Tick(float DeltaTime)
 
 }
 
+void AVRHand::GrabObject()
+{
+	TArray<AActor*> OverlappingActors;
+	GrabSphere->GetOverlappingActors(OverlappingActors);
+
+	if (!OverlappingActors.IsEmpty())
+	{
+		AActor* FirstActorUnderCollision = OverlappingActors[0];
+		if (FirstActorUnderCollision)
+		{
+			CurrentlyGrabbedActor = TScriptInterface<IInteractInterface>(FirstActorUnderCollision);
+			if (CurrentlyGrabbedActor)
+			{
+				CurrentlyGrabbedActor->OnGrab(HandMesh, HandMesh->GetComponentLocation());
+			}
+		}
+	}
+}
+
+void AVRHand::ReleaseObject()
+{
+	if (CurrentlyGrabbedActor)
+	{
+		CurrentlyGrabbedActor->OnRelease(HandMesh);
+		CurrentlyGrabbedActor = nullptr;
+	}
+}
+
