@@ -11,3 +11,44 @@ AVRGrabbableActor::AVRGrabbableActor()
 
 	GrabRegion->SetCollisionProfileName("Grabbable");
 }
+
+void AVRGrabbableActor::OnGrab(USkeletalMeshComponent* InComponent, const FVector& GrabLocation)
+{
+	if(InComponent){
+		switch (GrabType)
+		{
+		case EGrabType::Free:
+			ActorMesh->SetSimulatePhysics(false);
+			bIsHeld = ActorMesh->AttachToComponent(InComponent, FAttachmentTransformRules::KeepWorldTransform);
+			if (bIsHeld) {
+				GrabbedBySkeletalMesh = InComponent;
+			}
+			break;
+		case EGrabType::Snap:
+			break;
+		case EGrabType::None:
+			break;
+		}
+	}
+}
+
+void AVRGrabbableActor::OnRelease(USkeletalMeshComponent* InComponent)
+{
+	if (InComponent) {
+		switch (GrabType)
+		{
+		case EGrabType::Free:
+			if (bIsHeld) {
+				if (InComponent == GrabbedBySkeletalMesh) {
+					ActorMesh->SetSimulatePhysics(true);
+					bIsHeld = false;
+				}
+			}
+			break;
+		case EGrabType::Snap:
+			break;
+		case EGrabType::None:
+			break;
+		}
+	}
+}
